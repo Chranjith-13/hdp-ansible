@@ -39,7 +39,7 @@ mkdir -p ~/repos && cd ~/repos && git clone https://github.com/gautamborad/hdp-a
 
 ## Setup variables  
 
-Note: All the SSH logins must be known / prepared in advance or alternative SSH public-key authentication can also be used.
+Note: All the SSH logins must be known / setup in advance.
 
 ### Set the cluster/node level variable
 
@@ -95,6 +95,31 @@ bash provision_hdp.sh
 ```
 
 After the installation is done, the Ambari server will be running on the last master-node.
+
+
+## Run the Ranger Installation (Optional)
+
+Ranger will be installed by default on the last master node (same as Ambari node)
+
+This Ansible Role will perform the following:
+
+1. Checkout [Apache Ranger](https://github.com/apache/incubator-ranger)
+1. Setup git/maven etc.
+1. Setup MySQL (more DB to come soon) and create various DB User / Databases (More info in `group_vars/rangerdb.yml`)
+1. Apply patches (if present in `/data/patches/*.patch` dir
+1. Build Ranger
+1. Install Ranger
+1. Start Ranger Admin
+
+### Setup vars for ranger
+
+Modifiy (**only if required**) the variables in `group_vars/ranger` file to tweak where Ranger is checked out, installed etc.
+
+Run the below command to run the role.
+
+```
+bash provision_ranger.sh
+```
 
 
 ---

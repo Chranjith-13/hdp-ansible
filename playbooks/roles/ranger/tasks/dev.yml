@@ -29,11 +29,11 @@
        dest={{ranger.src_dir}}
        version={{ranger.branch}}
 
-- shell: ls -1  {{ranger.patches_dir}}
-  register: contents
-
-- file: path={{ranger.patches_dir}}/{{ item }} state=absent
-  with_items: contents.stdout_lines
+#- shell: ls -1  {{ranger.patches_dir}}
+#  register: contents
+#
+#- file: path={{ranger.patches_dir}}/{{ item }} state=absent
+#  with_items: contents.stdout_lines
 
 - name: Empty patches dir
   shell: mkdir -p {{ranger.patches_dir}} && rm -f {{ranger.patches_dir}}/*.patch
@@ -60,6 +60,12 @@
   shell: mvn clean compile package assembly:assembly chdir={{ranger.src_dir}}
   environment:
     JAVA_HOME: /usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+
+- name: Create ranger user
+  user: name={{ranger_user}} 
+
+- name: Create ranger group
+  group: name={{ranger_group}} state=present
 
 - name: Create {{ranger.build_dir}} directory
   file: path={{ranger.build_dir}} state=directory group="ranger" owner="ranger"

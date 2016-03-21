@@ -3,7 +3,7 @@ mysql_root_password_update: true
 overwrite_global_mycnf: yes
 mysql_databases:
   - name: ranger
-  - name: rangerlogger
+  - name: ranger_audit
 mysql_users:
   - name: root
     host: "%"

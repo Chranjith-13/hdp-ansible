@@ -13,14 +13,7 @@ hdp-ansible
 Installation 
 ------------
 
-* Setup Ambari cluster
-* Optionally Build Ranger on one of the node and apply local patches
-
----
-
-
-# Setup on local machine
-## Install required tools for ansible
+## Install required tools (`Note: On local`)
 
 1. Install Ansible and git:
 
@@ -28,6 +21,7 @@ Installation
   sudo su -
   yum/apt-get install gcc gcc-c++ python-pip python-devel -y
   pip install ansible 
+  ansible-galaxy install geerlingguy.mysql
   ```
 
 2. Clone the repository

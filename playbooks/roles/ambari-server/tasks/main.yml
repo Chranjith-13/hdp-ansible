@@ -2,10 +2,10 @@
 - include: prerequisites.yml
 
 - include: single-node.yml
-  when: not custom_blueprint and groups['master-nodes']|length == 1 and ('slave-nodes' not in groups or groups['slave-nodes']|length == 0)
+  when: not custom_blueprint and (groups['slave-nodes']|length == 0)
 
 - include: multi-nodes.yml
-  when: not custom_blueprint and groups['master-nodes']|length > 0 and 'slave-nodes' in groups and groups['slave-nodes']|length > 0
+  when: not custom_blueprint and (groups['slave-nodes']|length > 0)
 
 - include: custom.yml
   when: custom_blueprint
@@ -14,7 +14,7 @@
   template: src=hdprepo.j2 dest=/tmp/hdprepo mode=0644
   when: custom_repo
 
-- name: Slurp the hdp repo
+- name: Read the repo
   slurp: src=/tmp/hdprepo
   register: hdprepo
   when: custom_repo
@@ -34,7 +34,7 @@
 - name: Install git
   yum: name=git state=latest
 
-- name: Slurp the blueprint
+- name: Fetch the blueprint
   slurp: src=/tmp/cluster_blueprint
   register: cluster_blueprint
 

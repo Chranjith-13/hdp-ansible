@@ -18,7 +18,6 @@
 
 - name: "Show debug info"
   hosts: ranger-node
-  become: yes
   tasks:
     - name: "Show ranger-node info"
       debug: var=hostvars[inventory_hostname]
@@ -42,5 +41,3 @@
 #  tags:
 #    - ranger-only
 #
-
-

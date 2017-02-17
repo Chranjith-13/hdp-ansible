@@ -7,6 +7,7 @@
     - gcc-c++
     - mysql-connector-java
     - make
+    - python-pip
   when: ansible_os_family == "RedHat"
 
 - name: Get apache-maven-3.0.5
@@ -62,7 +63,7 @@
     JAVA_HOME: /usr/lib/jvm/jre-1.7.0-openjdk.x86_64
 
 - name: Create ranger user
-  user: name={{ranger_user}} 
+  user: name={{ranger_user}}
 
 - name: Create ranger group
   group: name={{ranger_group}} state=present
@@ -89,5 +90,3 @@
 - name: Start Ranger Admin
   command: "/usr/bin/ranger-admin start"
   become_user: ranger
-
-

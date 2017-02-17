@@ -10,7 +10,7 @@ hdp-ansible
 - TODO
 
 
-Installation 
+Installation
 ------------
 
 ## Install required tools (`Note: On local`)
@@ -20,7 +20,7 @@ Installation
   ```
   sudo su -
   yum/apt-get install gcc gcc-c++ python-pip python-devel -y
-  pip install ansible 
+  pip install ansible
   ansible-galaxy install geerlingguy.mysql
   ```
 
@@ -37,32 +37,32 @@ Note: All the SSH logins must be known / setup in advance.
 
 ### Set the cluster/node level variable
 
-Enter the cluster nodes info in the `inventory/cluster` file. This file contains two groups: 
+Enter the cluster nodes info in the `inventory/cluster` file. This file contains two groups:
 
-1. `master-nodes` 
+1. `master-nodes`
     * Nodes running the master Hadoop services. You can specify one, two or three nodes.
     * The last node from this list will be used to setup ambari-sever / ranger
- 
-1. `slave-nodes` 
-    * Nodes running the slave Hadoop services. 
+
+1. `slave-nodes`
+    * Nodes running the slave Hadoop services.
     * For single node cluster, dont specify anything here.
- 
+
 - Example of a 1 master / 3 slave nodes cluster:
 
   ```
   [master-nodes]
-  master01 ansible_host=192.168.0.2 
-  
+  master01 ansible_host=192.168.0.2
+
   [slave-nodes]
-  slave01 ansible_host=192.168.0.3 
-  slave02 ansible_host=192.168.0.4 
+  slave01 ansible_host=192.168.0.3
+  slave02 ansible_host=192.168.0.4
   ```
 
-- Example for installing a single-node HDP cluster 
+- Example for installing a single-node HDP cluster
 
   ```
   [master-nodes]
-  master01 ansible_host=localhost 
+  master01 ansible_host=localhost
   ```
 
 ### Set the HDP/component level variables
@@ -107,7 +107,7 @@ This Ansible Role will perform the following:
 
 ### Setup vars for ranger
 
-Modifiy (**only if required**) the variables in `group_vars/ranger` file to tweak where Ranger is checked out, installed etc.
+Modify (**only if required**) the variables in `group_vars/ranger` file to tweak where Ranger is checked out, installed etc.
 
 Run the below command to run the role.
 
@@ -117,5 +117,3 @@ bash provision_ranger.sh
 
 
 ---
-
-

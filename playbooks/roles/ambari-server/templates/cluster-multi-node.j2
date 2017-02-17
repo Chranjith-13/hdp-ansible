@@ -23,38 +23,6 @@
       ]
     },
     {% endif -%}
-    {% if groups['master-nodes']|length > 1 -%}
-    {
-      "name" : "masternode_2",
-      "hosts" : [
-{% for node in groups['master-nodes']|sort %}{% if loop.index == 2 %}
-        {
-          "fqdn" : "{{ hostvars[node]['ansible_fqdn'] | lower }}"
-        }
-{% endif %}{% endfor %}
-      ]
-    },
-    {% endif -%}
-    {% if groups['master-nodes']|length > 2 -%}
-    {
-      "name" : "masternode_3",
-      "hosts" : [
-        {
-          "fqdn" : "{{ hostvars[groups['ambari-node'][0]]['ansible_fqdn'] | lower }}"
-        }
-      ]
-    },
-    {% endif -%}
-    {% if groups['master-nodes']|length == 2 -%}
-    {
-      "name" : "slavenode_zookeeper",
-      "hosts" : [
-        {
-          "fqdn" : "{{ hostvars[groups['slave-nodes']|sort|first]['ansible_fqdn'] | lower }}"
-        }
-      ]
-    },
-    {% endif -%}
     {
       "name" : "masternode_1",
       "hosts" : [

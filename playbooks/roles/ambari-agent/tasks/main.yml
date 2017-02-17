@@ -4,9 +4,8 @@
   with_first_found:
     - files:
         - "{{ ansible_os_family|lower }}.yml"
-        - defaults.yml
       paths:
-        - ../vars
+        - ../../../group_vars
 
 - name: Download the Ambari repo
   get_url: url={{ ambari_custom_repo }} dest={{ ambari_repo_file }}
@@ -41,7 +40,7 @@
 - name: Configure the Ambari agent
   lineinfile: dest=/etc/ambari-agent/conf/ambari-agent.ini
               regexp='^hostname='
-              line='hostname={{ hostvars[groups['ambari-node'][0]]['ansible_fqdn'] }}'
+              line='hostname={{ hostvars[groups['master-nodes'][0]]['ansible_fqdn'] }}'
               state=present
 
 - name: Make sure ambari-agent is running

@@ -9,7 +9,12 @@
         - ../vars
 
 - name: Download the Ambari repo
+  get_url: url={{ ambari_custom_repo }} dest={{ ambari_repo_file }}
+  when: ambari_use_custom_repo == true
+
+- name: Download the Ambari repo
   get_url: url={{ ambari_repo }} dest={{ ambari_repo_file }}
+  when: ambari_use_custom_repo == false
 
 - name: Add apt key
   apt_key: keyserver=keyserver.ubuntu.com id={{ ambari_repo_key }}

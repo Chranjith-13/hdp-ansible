@@ -9,13 +9,13 @@ ranger_group: ranger
 
 ranger:
     repo: 'https://github.com/apache/incubator-ranger.git'
-    branch: 'ranger-0.5'
+    branch: 'master'
     apply_patches: true
-    src_dir: '/var/ranger-ansible/ranger-src'
-    patches_dir: /var/ranger-ansible/ranger-patches
-    build_dir: /home/vagrant/ranger-build/
-    ranger_ver: '0.5.0'
-    dir_name: ranger-0.5.0-admin
+    src_dir: '~/ranger-src'
+    patches_dir: ~/hortonworks/patches
+    build_dir: ~/ranger-build/
+    ranger_ver: '0.6.0'
+    dir_name: ranger-admin
 
 maven_url : http://mirror.olnevhost.net/pub/apache/maven/binaries/apache-maven-3.2.1-bin.tar.gz
 

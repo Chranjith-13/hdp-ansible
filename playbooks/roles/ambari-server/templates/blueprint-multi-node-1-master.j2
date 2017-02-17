@@ -167,6 +167,41 @@
         "webhcat.proxyuser.hue.hosts" : "*"
       }
     },
+    {% if install_logsearch == true -%}
+    {
+      "logsearch-admin-json": {
+        "logsearch_admin_password": "admin"
+      }
+    },
+    {% endif -%}
+    {% if install_ranger == true -%}
+    {
+      "admin-properties": {
+        "db_root_password": "vagrant",
+        "db_password": "rangeradmin01",
+        "policymgr_external_url": "http://{{ hostvars[groups['master-nodes']|sort|first]['ansible_fqdn'] }}:6080",
+        "db_root_user": "root",
+        "DB_FLAVOR": "MYSQL",
+        "db_user": "rangeradmin01",
+        "db_name": "ranger01",
+        "db_host": "{{ hostvars[groups['master-nodes']|sort|first]['ansible_fqdn'] }}"
+      }
+    },
+    {
+      "ranger-env": {
+        "ranger_admin_password": "rangerpassword",
+        "ranger_privelege_user_jdbc_url": "jdbc:mysql://{{ hostvars[groups['master-nodes']|sort|first]['ansible_fqdn'] }}"
+      }
+    },
+    {
+      "ranger-admin-site": {
+        "ranger.jpa.jdbc.driver": "com.mysql.jdbc.Driver",
+        "ranger.jpa.jdbc.url": "jdbc:mysql://{{ hostvars[groups['master-nodes']|sort|first]['ansible_fqdn'] }}/ranger01",
+        "ranger.audit.source.type": "solr",
+        "ranger.audit.solr.urls": "http://{{ hostvars[groups['master-nodes']|sort|first]['ansible_fqdn'] }}:6083/solr/ranger_audits"
+      }
+    },
+    {% endif -%}
     {
       "hive-site" : {
         "hive.tez.container.size" : "-1",
@@ -244,6 +279,14 @@
         {% if install_hbase == true -%}
         {
           "name" : "HBASE_REGIONSERVER"
+        },
+        {% endif -%}
+        {% if install_logsearch == true -%}
+        {
+          "name": "LOGSEARCH_LOGFEEDER"
+        },
+        {
+          "name": "LOGSEARCH_SOLR_CLIENT"
         },
         {% endif -%}
         {
@@ -371,6 +414,31 @@
         },
         {
           "name" : "FALCON_CLIENT"
+        },
+        {% endif -%}
+        {% if install_logsearch == true -%}
+        {
+          "name": "LOGSEARCH_LOGFEEDER"
+        },
+        {
+          "name": "LOGSEARCH_SERVER"
+        },
+        {
+          "name": "LOGSEARCH_SOLR"
+        },
+        {
+          "name": "LOGSEARCH_SOLR_CLIENT"
+        },
+        {% endif -%}
+        {% if install_ranger == true -%}
+        {
+          "name": "RANGER_ADMIN"
+        },
+        {
+          "name": "RANGER_USERSYNC"
+        },
+        {
+          "name": "RANGER_TAGSYNC"
         },
         {% endif -%}
         {

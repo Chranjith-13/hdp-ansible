@@ -33,14 +33,14 @@
     - { role: geerlingguy.mysql }
 
 
-- name: "Apply the ranger role to ranger nodes"
-  hosts: ranger-node
-  any_errors_fatal: true
-  become: yes
-  roles:
-    - ranger
-  tags:
-    - ranger-only
-
+#- name: "Apply the ranger role to ranger nodes"
+#  hosts: ranger-node
+#  any_errors_fatal: true
+#  become: yes
+#  roles:
+#    - ranger
+#  tags:
+#    - ranger-only
+#
 
 

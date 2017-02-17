@@ -47,10 +47,28 @@
   tags:
     - ambari-agent-only
 
+- name: "Apply the mysql role to ambari nodes"
+  hosts: ambari-node
+  vars_files:
+    - group_vars/rangerdb.yml
+  roles:
+    - { role: geerlingguy.mysql }
+
+
+- name: "Apply the ranger role to ambari nodes"
+  hosts: ambari-node
+  any_errors_fatal: true
+  become: yes
+  roles:
+    - ranger
+  tags:
+    - ranger-only
+
+
 - name: "Apply the ambari-server role to ambari-node group"
   hosts: ambari-node
   become: yes
   roles:
     - ambari-server
   tags:
-    - ambari-server-only
+   - ambari-server-only

@@ -1,2 +1,5 @@
 ambari_repo: "http://public-repo-1.hortonworks.com/ambari/centos{{ ansible_distribution_major_version }}/2.x/updates/{{ ambari_version }}/ambari.repo"
 ambari_repo_file: "/etc/yum.repos.d/ambari.repo"
+ambari_use_custom_repo: true
+ambari_custom_repo: "http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/2.x/latest/2.4.0.0/ambari.repo"
+

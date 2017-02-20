@@ -1,23 +1,9 @@
 ---
 - name: Load OS specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_os_family|lower }}.yml"
-      paths:
-        - ../../../group_vars
-
-- name: Download the Ambari repo
-  get_url: url={{ ambari_custom_repo }} dest={{ ambari_repo_file }}
-  when: ambari_use_custom_repo == true
+  include_vars: ../../../group_vars/all
 
 - name: Download the Ambari repo
   get_url: url={{ ambari_repo }} dest={{ ambari_repo_file }}
-  when: ambari_use_custom_repo == false
-
-- name: Add apt key
-  apt_key: keyserver=keyserver.ubuntu.com id={{ ambari_repo_key }}
-  when: ansible_os_family == "Debian"
 
 - name: Ensure required packages are installed (yum)
   yum:
@@ -26,16 +12,6 @@
     state: installed
   with_items:
     - ambari-agent
-  when: ansible_os_family == "RedHat"
-
-- name: Ensure required packages are installed (apt)
-  apt:
-    name: "{{ item }}"
-    update_cache: yes
-    state: installed
-  with_items:
-    - ambari-agent
-  when: ansible_os_family == "Debian"
 
 - name: Configure the Ambari agent
   lineinfile: dest=/etc/ambari-agent/conf/ambari-agent.ini

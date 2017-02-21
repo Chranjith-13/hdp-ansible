@@ -5,10 +5,10 @@ mysql_databases:
   - name: ranger
   - name: ranger_audit
 mysql_users:
-    #  - name: root
-    #    host: "%"
-    #    password: vagrant
-    #    priv: "*.*:ALL,GRANT"
+  - name: root
+    host: "%"
+    password: vagrant
+    priv: "*.*:ALL,GRANT"
   - name: rangeradmin
     host: "%"
     password: rangeradmin

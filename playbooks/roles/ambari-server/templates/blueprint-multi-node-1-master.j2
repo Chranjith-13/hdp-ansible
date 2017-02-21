@@ -167,11 +167,11 @@
     {
       "admin-properties": {
         "db_root_password": "vagrant",
-        "db_password": "rangeradmin01",
+        "db_password": "rangeradmin",
         "policymgr_external_url": "http://{{ hostvars[groups['master-nodes']|sort|first]['ansible_fqdn'] }}:6080",
         "db_root_user": "root",
         "DB_FLAVOR": "MYSQL",
-        "db_user": "rangeradmin01",
+        "db_user": "rangeradmin",
         "db_name": "ranger01",
         "db_host": "{{ hostvars[groups['master-nodes']|sort|first]['ansible_fqdn'] }}"
       }

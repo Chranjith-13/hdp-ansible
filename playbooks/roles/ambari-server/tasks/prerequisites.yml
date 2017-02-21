@@ -26,7 +26,7 @@
 - name: Run Ambari Server setup
   shell: /usr/sbin/ambari-server setup -s
 
-- name: because packaging is hard
+- name: Register ambari-server to /usr/lib/systemd
   copy: src=ambari-server.service  dest=/usr/lib/systemd/system/ambari-server.service
   when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
 

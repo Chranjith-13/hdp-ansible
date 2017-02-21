@@ -1,25 +1,28 @@
 ---
-cluster_name: $GB_CLUSTER_NAME
-hdp_version: $GB_HDP_VERSION
-custom_repo: $GB_CUSTOM_REPO
-custom_repo_url: $GB_CUSTOM_REPO_URL
-custom_repo_target: $GB_REPO_TARGET
-ambari_version: $GB_AMBARI_VERSION
-install_spark: $GB_INSTALL_SPARK
-install_flume: $GB_INSTALL_FLUME
-install_hbase: $GB_INSTALL_HBASE
-install_storm: $GB_INSTALL_STORM
-install_kafka: $GB_INSTALL_KAFKA
-install_falcon: $GB_INSTALL_FALCON
-install_ranger: $GB_INSTALL_RANGER
-install_logsearch: $GB_INSTALL_LOGSEARCH
-custom_ranger: $GB_CUSTOM_RANGER
-custom_blueprint: $GB_CUSTOM_BLUEPRINT
-admin_password: $GB_ADMIN_PASSWORD
-services_password: $GB_SERVICES_PASSWORD
+cluster_name: $cluster_name
+hdp_version: $hdp_version
+custom_repo: $custom_repo
+custom_repo_url: $custom_repo_url
+custom_repo_target: $custom_repo_target
+ambari_version: $ambari_version
+install_spark: $install_spark
+install_flume: $install_flume
+install_hbase: $install_hbase
+install_storm: $install_storm
+install_kafka: $install_kafka
+install_falcon: $install_falcon
+install_ranger: $install_ranger
+install_logsearch: $install_logsearch
+admin_password: $admin_password
+services_password: $services_password
+
+alerts_contact: 'root@localhost.localdomain'
+
+custom_ranger: false
+custom_blueprint: false
 
 # set to true to show host variables
-debug: $GB_DEBUG_ENABLED
+debug: $debug
 
-ambari_repo_file: $GB_AMBARI_REPO_FILE
-ambari_repo: $GB_AMBARI_REPO
+ambari_repo_file: $ambari_repo_file
+ambari_repo: "http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/2.x/updates/{{ ambari_version }}/ambari.repo"

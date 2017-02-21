@@ -1,11 +1,6 @@
 ---
 - name: Load OS specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_os_family|lower }}.yml"
-      paths:
-        - ../../../group_vars
+  include_vars: ../../../group_vars/all
 
 - name: Check if ambari-server service exists
   stat: path=/etc/init.d/ambari-server

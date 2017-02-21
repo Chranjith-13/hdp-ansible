@@ -14,12 +14,29 @@
   tags:
     - ambari-agent-only
 
-- name: "Apply the mysql role to ambari nodes"
+
+- name: "Apply the mysql role to master nodes"
   hosts: master-nodes
-  vars_files:
-    - group_vars/rangerdb.yml
+  become: yes
+  pre_tasks:
+
+ #- name: Install the MySQL Community Edition repository
+ #  shell: rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+ #  args:
+ #    creates: /etc/yum.repos.d/mysql-community.repo
+
+  - name: Add MySQL 5.6 Server repository
+    yum: name=http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm state=present
+
   roles:
-    - { role: geerlingguy.mysql }
+  - geerlingguy.mysql
+
+#- name: "Apply the mysql role to ambari nodes"
+#  hosts: master-nodes
+#  vars_files:
+#    - group_vars/rangerdb.yml
+#  roles:
+#    - { role: geerlingguy.mysql }
 
 
 - name: "Apply the ranger role to ambari nodes"

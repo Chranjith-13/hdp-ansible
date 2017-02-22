@@ -15,7 +15,20 @@
     {
       "ranger-env": {
         "ranger_admin_password": "rangerpassword",
-        "is_solrCloud_enabled" : "true"
+        "is_solrCloud_enabled" : "true",
+    {% if install_hbase == true -%}
+        "ranger-hbase-plugin-enabled" : "Yes",
+    {% endif -%}
+    {% if install_storm == true -%}
+        "ranger-storm-plugin-enabled" : "Yes",
+    {% endif -%}
+    {% if install_kafka == true -%}
+        "ranger-kafka-plugin-enabled" : "Yes",
+    {% endif -%}
+        "ranger-hdfs-plugin-enabled" : "Yes",
+        "ranger-yarn-plugin-enabled" : "Yes",
+        "ranger-hive-plugin-enabled" : "Yes",
+        "ranger-knox-plugin-enabled" : "Yes"
       }
     },
     {

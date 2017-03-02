@@ -26,3 +26,15 @@ debug: false
 
 ambari_repo_file: /etc/yum.repos.d/ambari.repo
 ambari_repo: "http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/2.x/updates/{{ ambari_version }}/ambari.repo"
+
+user_has_permission: test11
+password1: test11
+user_doesnot_have_permission: test12
+password2: test12
+create_hdfs_dir: /apps/demoDir12
+hbase_schema_file: /root/createtables12.txt
+hbase_table_query: "create 'RitTable12', 'personal12', 'medical12','finance12'"
+hive_server_host: dk-bug-75085-1.openstacklocal
+hive_create_table_query: create table ritTable12(col12 int, col22 string);
+hadoop_mapreduce_jar_path: /var/hadoop-mapreduce-examples-2.1.0-beta.jar
+yarn_queue: a1

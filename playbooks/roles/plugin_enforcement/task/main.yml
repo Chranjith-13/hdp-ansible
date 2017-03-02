@@ -1,0 +1,6 @@
+---
+- name: include vars
+  include_vars: ../../../group_vars/all
+
+- name: Starting Policy Enforcement...
+  include: plugin_enf.yml

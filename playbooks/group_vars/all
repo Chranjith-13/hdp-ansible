@@ -32,9 +32,11 @@ password1: test11
 user_doesnot_have_permission: test12
 password2: test12
 create_hdfs_dir: /apps/demoDir12
-hbase_schema_file: /root/createtables12.txt
+hbase_schema_file: /usr/createtables12.txt
 hbase_table_query: "create 'RitTable12', 'personal12', 'medical12','finance12'"
 hive_server_host: dk-bug-75085-1.openstacklocal
 hive_create_table_query: create table ritTable12(col12 int, col22 string);
-hadoop_mapreduce_jar_path: /var/hadoop-mapreduce-examples-2.1.0-beta.jar
 yarn_queue: a1
+
+hadoop_mapreduce_jar_url: http://central.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/2.2.0/hadoop-mapreduce-examples-2.2.0.jar
+hadoop_mapreduce_jar_path: /var/hadoop-mapreduce-examples-2.2.0.jar

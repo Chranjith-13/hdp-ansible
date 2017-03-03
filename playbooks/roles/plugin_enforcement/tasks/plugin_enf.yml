@@ -66,3 +66,24 @@
   become: yes
   become_method: su
   ignore_errors: True
+
+- name: KNOX Plugin Enforcement for True-Positive Case
+#  command: "curl -iku admin:admin-password -X GET  'https://{{ knox_server_host }}:8443/gateway/default/webhdfs/v1?op=LISTSTATUS'"
+  uri:
+    url: 'https://{{ knox_server_host }}:8443/gateway/default/webhdfs/v1?op=LISTSTATUS'
+    method: GET
+    user: admin
+    password: admin-password
+    status_code: 200
+    force_basic_auth: yes
+  ignore_errors: True
+
+- name: KNOX Plugin Enforcement for True-Negative Case
+  uri:
+    url: 'https://{{ knox_server_host }}:8443/gateway/default/webhdfs/v1?op=LISTSTATUS'
+    method: GET
+    user: sam 
+    password: sam-password
+    status_code: 403,200
+    force_basic_auth: yes
+  ignore_errors: True

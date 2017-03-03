@@ -27,6 +27,7 @@ debug: false
 ambari_repo_file: /etc/yum.repos.d/ambari.repo
 ambari_repo: "http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/2.x/updates/{{ ambari_version }}/ambari.repo"
 
+is_kerberos: True
 user_has_permission: test11
 password1: test11
 user_doesnot_have_permission: test12
@@ -38,6 +39,8 @@ hive_server_host: dk-bug-75085-1.openstacklocal
 hive_create_table_query: create table ritTable12(col12 int, col22 string);
 yarn_queue: a1
 knox_server_host: hc-test21-2.openstacklocal
+storm_topology_name: topology1
+kafka_topic_name: topic1
 
 hadoop_mapreduce_jar_url: http://central.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/2.2.0/hadoop-mapreduce-examples-2.2.0.jar
 hadoop_mapreduce_jar_path: /var/hadoop-mapreduce-examples-2.2.0.jar

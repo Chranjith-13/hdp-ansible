@@ -2,5 +2,10 @@
 - name: include vars
   include_vars: ../../../group_vars/all
 
-- name: Starting Policy Enforcement...
+- name: Starting Policy Enforcement For Simple Cluster...
   include: plugin_enf.yml
+  when: '{{ is_kerberos|lower }} == false'
+
+- name: Starting Policy Enforcement For Kerberized Cluster...
+  include: plugin_enf_krb.yml
+  when: '{{ is_kerberos|lower }} == true'

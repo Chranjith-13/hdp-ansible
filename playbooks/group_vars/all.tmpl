@@ -27,6 +27,7 @@ debug: $debug
 ambari_repo_file: $ambari_repo_file
 ambari_repo: "http://s3.amazonaws.com/dev.hortonworks.com/ambari/centos6/2.x/updates/{{ ambari_version }}/ambari.repo"
 
+is_kerberos: $is_kerberos
 user_has_permission: $user_has_permission
 password1: $password1
 user_doesnot_have_permission: $user_doesnot_have_permission
@@ -38,6 +39,8 @@ hive_server_host: $hive_server_host
 hive_create_table_query: $hive_create_table_query
 yarn_queue: $yarn_queue
 knox_server_host: $knox_server_host
+storm_topology_name: $storm_topology_name
+kafka_topic_name: $kafka_topic_name
 
 hadoop_mapreduce_jar_url: $hadoop_mapreduce_jar_url
 hadoop_mapreduce_jar_path: /var/hadoop-mapreduce-examples-2.2.0.jar

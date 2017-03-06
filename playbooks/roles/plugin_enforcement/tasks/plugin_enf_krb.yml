@@ -100,6 +100,7 @@
     password: admin-password
     status_code: 200,403
     force_basic_auth: yes
+    validate_certs: no
   ignore_errors: True
 
 - name: KNOX Plugin Enforcement for True-Negative Case
@@ -110,6 +111,7 @@
     password: sam-password
     status_code: 403,200
     force_basic_auth: yes
+    validate_certs: no
   ignore_errors: True
 
 - name: Kdestroy...
@@ -146,7 +148,7 @@
   ignore_errors: True
 
 - name: KAFKA Plugin Enforcement for True-Positive Case
-  shell: 'echo "HP.20" | /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list `hostname -f`:6667 --topic "{{ kafka_topic_name }}" --security-protocol PLAINTEXTSASL & sleep 4; exit;'
+  shell: 'echo "HP.20" | /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list `hostname -f`:6667 --topic "{{ kafka_topic_name }}" --security-protocol PLAINTEXTSASL & sleep 8; exit;'
   ignore_errors: True
 
 - name: Kdestroy...
@@ -157,7 +159,7 @@
   ignore_errors: True
 
 - name: KAFKA Plugin Enforcement for True-Negative Case
-  shell: 'echo "HP.20" | /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list `hostname -f`:6667 --topic "{{ kafka_topic_name }}" --security-protocol PLAINTEXTSASL & sleep 4; exit;'
+  shell: 'echo "HP.20" | /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list `hostname -f`:6667 --topic "{{ kafka_topic_name }}" --security-protocol PLAINTEXTSASL & sleep 8; exit;'
   ignore_errors: True
 
 - name: Kdestroy...

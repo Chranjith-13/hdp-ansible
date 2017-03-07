@@ -74,8 +74,9 @@
     method: GET
     user: admin
     password: admin-password
-    status_code: 200
+    status_code: 403,200
     force_basic_auth: yes
+    validate_certs: no
   ignore_errors: True
 
 - name: KNOX Plugin Enforcement for True-Negative Case
@@ -86,4 +87,5 @@
     password: sam-password
     status_code: 403,200
     force_basic_auth: yes
+    validate_certs: no
   ignore_errors: True

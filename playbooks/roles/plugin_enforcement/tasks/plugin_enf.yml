@@ -54,14 +54,14 @@
   ignore_errors: True
 
 - name: YARN Plugin Enforcement for True-Positive Case
-  command: "yarn jar {{hadoop_mapreduce_jar_path}} pi -Dmapred.job.queue.name={{yarn_queue}} 16 100000"
+  shell: yarn jar "{{ hadoop_mapreduce_jar_path }}" pi -Dmapred.job.queue.name={{ yarn_queue }} 10 100000 & sleep 10; exit;
   become_user: "{{ user_has_permission }}"
   become: yes
   become_method: su
   ignore_errors: True
 
 - name: YARN Plugin Enforcement for True-Negative Case
-  command: "yarn jar {{hadoop_mapreduce_jar_path}} pi -Dmapred.job.queue.name={{yarn_queue}} 16 100000"
+  shell: yarn jar "{{ hadoop_mapreduce_jar_path }}" pi -Dmapred.job.queue.name={{ yarn_queue }} 10 100000 & sleep 10; exit;
   become_user: "{{ user_doesnot_have_permission }}"
   become: yes
   become_method: su
